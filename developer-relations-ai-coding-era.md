@@ -175,3 +175,7 @@ Not by abandoning its roots, but by returning to the original reason the functio
 - [Supabase homepage](https://supabase.com/)
 - [LangGraph](https://www.langchain.com/langgraph)
 - [Hugging Face Hub docs](https://huggingface.co/docs/hub/index)
+
+## Contact
+
+GitHub: [wangyubo79](https://github.com/wangyubo79)
