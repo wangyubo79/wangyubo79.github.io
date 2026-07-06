@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Developer Relations in the AI Era</title>
     <meta name="description" content="An essay on how Developer Relations changes as AI coding reshapes who builds software and how adoption happens.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
     <style>
       :root {
         color-scheme: light;
@@ -24,8 +27,9 @@
         margin: 0;
         background: linear-gradient(180deg, rgba(15, 118, 110, 0.08), transparent 18rem), var(--bg);
         color: var(--ink);
-        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        line-height: 1.68;
+        font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+        font-optical-sizing: auto;
+        line-height: 1.72;
       }
 
       main {
@@ -46,18 +50,19 @@
         display: inline-flex;
         margin-bottom: 24px;
         color: var(--accent-dark);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         font-size: 0.92rem;
         font-weight: 650;
         text-decoration: none;
       }
 
       .source-link:hover, a:hover { color: var(--accent); }
-      h1, h2, h3 { line-height: 1.18; }
+      h1, h2, h3 { line-height: 1.16; letter-spacing: 0; }
 
       h1 {
         max-width: 760px;
         margin: 0 0 12px;
-        font-family: Georgia, "Times New Roman", serif;
+        font-family: "Fraunces", Georgia, "Times New Roman", serif;
         font-size: clamp(2.4rem, 8vw, 5.8rem);
         font-weight: 700;
       }
@@ -66,17 +71,20 @@
         margin-top: 52px;
         border-top: 1px solid var(--line);
         padding-top: 28px;
-        font-family: Georgia, "Times New Roman", serif;
+        font-family: "Fraunces", Georgia, "Times New Roman", serif;
         font-size: clamp(1.55rem, 3vw, 2.25rem);
+        font-weight: 650;
       }
 
       h3 {
         margin-top: 32px;
         color: var(--accent-dark);
+        font-family: "Fraunces", Georgia, "Times New Roman", serif;
         font-size: 1.12rem;
+        font-weight: 650;
       }
 
-      p, li { font-size: 1.04rem; }
+      p, li { font-size: 1.08rem; }
       p { margin: 1.05em 0; }
       a { color: var(--accent-dark); text-underline-offset: 0.18em; }
       ul, ol { padding-left: 1.45rem; }
@@ -87,6 +95,7 @@
         margin: 28px 0;
         overflow-x: auto;
         border-collapse: collapse;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         font-size: 0.95rem;
       }
 
