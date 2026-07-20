@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Developer Relations in the AI Era — Yubo Wang</title>
+    <meta name="description" content="An essay on how Developer Relations changes as AI coding reshapes who builds software and how adoption happens.">
+    <link rel="canonical" href="https://wangyubo79.github.io/developer-relations-ai-coding-era/">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Developer Relations in the AI Era">
+    <meta property="og:description" content="How DevRel changes as AI coding reshapes who builds software and how adoption happens.">
+    <meta property="og:url" content="https://wangyubo79.github.io/developer-relations-ai-coding-era/">
+    <meta property="article:published_time" content="2026-07-06">
+    <meta property="article:author" content="Yubo Wang">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Developer Relations in the AI Era">
+    <meta name="twitter:description" content="How DevRel changes as AI coding reshapes who builds software and how adoption happens.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5f1e8;
+        --paper: #fffdf8;
+        --ink: #1c2726;
+        --muted: #667370;
+        --line: #d7d1c5;
+        --accent: #0f766e;
+        --accent-dark: #115e59;
+        --table: #eef6f4;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        background: linear-gradient(180deg, rgba(15, 118, 110, 0.08), transparent 22rem), var(--bg);
+        color: var(--ink);
+        font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+        line-height: 1.75;
+      }
+
+      a { color: var(--accent-dark); text-underline-offset: 0.2em; }
+      a:hover { color: var(--accent); }
+      a:focus-visible { border-radius: 3px; outline: 3px solid rgba(15, 118, 110, 0.3); outline-offset: 4px; }
+
+      .site-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: min(100% - 40px, 980px);
+        min-height: 88px;
+        margin: 0 auto;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .wordmark {
+        color: var(--ink);
+        font-family: "Newsreader", Georgia, serif;
+        font-size: 1.24rem;
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      .back-link { color: var(--muted); font-size: 0.9rem; font-weight: 500; }
+
+      main {
+        width: min(100% - 32px, 980px);
+        margin: 0 auto;
+        padding: 48px 0 72px;
+      }
+
+      article {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        box-shadow: 0 20px 60px rgba(28, 39, 38, 0.07);
+        padding: clamp(28px, 6vw, 72px);
+      }
+
+      .article-meta {
+        margin-bottom: 24px;
+        color: var(--accent-dark);
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      h1, h2, h3 {
+        font-family: "Newsreader", Georgia, serif;
+        line-height: 1.15;
+        letter-spacing: -0.015em;
+      }
+
+      h1 { max-width: 780px; margin: 0 0 12px; font-size: clamp(2.8rem, 7vw, 5.5rem); font-weight: 500; }
+      h2 { margin-top: 56px; border-top: 1px solid var(--line); padding-top: 30px; font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 600; }
+      h3 { margin-top: 34px; color: var(--accent-dark); font-size: 1.25rem; font-weight: 600; }
+      p, li { font-size: 1.04rem; }
+      p { margin: 1.05em 0; }
+      ul, ol { padding-left: 1.45rem; }
+
+      table {
+        display: block;
+        width: 100%;
+        margin: 30px 0;
+        overflow-x: auto;
+        border-collapse: collapse;
+        font-size: 0.94rem;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      th, td { min-width: 160px; border: 1px solid var(--line); padding: 12px 14px; vertical-align: top; }
+      th { background: var(--table); color: var(--accent-dark); text-align: left; }
+      code { border-radius: 4px; background: #eef1ed; padding: 0.1rem 0.28rem; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.92em; }
+      .loading, .error { color: var(--muted); font-size: 1.05rem; }
+
+      .article-footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        width: min(100% - 40px, 980px);
+        margin: 0 auto;
+        border-top: 1px solid var(--line);
+        padding: 30px 0 44px;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 640px) {
+        .site-header, .article-footer { width: min(100% - 28px, 980px); }
+        .site-header { min-height: 74px; }
+        main { width: min(100% - 20px, 980px); padding: 20px 0 44px; }
+        article { padding: 32px 18px; }
+        h2 { margin-top: 42px; }
+        .article-footer { flex-direction: column; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="wordmark" href="/">Yubo Wang</a>
+      <a class="back-link" href="/">← Back to writing</a>
+    </header>
+    <main>
+      <article>
+        <div class="article-meta"><time datetime="2026-07-06">Jul 6, 2026</time> · Essay · 12 min read</div>
+        <div id="content" class="loading" aria-live="polite">Loading article...</div>
+      </article>
+    </main>
+    <footer class="article-footer">
+      <span>Written by Yubo Wang</span>
+      <a href="/">More writing →</a>
+    </footer>
+    <script>
+      const content = document.querySelector('#content');
+      const escapeHtml = (value) => value
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;');
+
+      const inline = (value) => escapeHtml(value)
+        .replace(/`([^`]+)`/g, '<code>$1</code>')
+        .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+        .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+
+      const cells = (line) => line.trim().replace(/^\||\|$/g, '').split('|').map((cell) => cell.trim());
+
+      function renderTable(lines) {
+        const header = cells(lines[0]);
+        const rows = lines.slice(2).map(cells);
+        return `<table><thead><tr>${header.map((cell) => `<th>${inline(cell)}</th>`).join('')}</tr></thead><tbody>${rows.map((row) => `<tr>${row.map((cell) => `<td>${inline(cell)}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+      }
+
+      function render(markdown) {
+        const lines = markdown.split('\n');
+        const html = [];
+        let paragraph = [];
+        let list = [];
+
+        const flushParagraph = () => {
+          if (paragraph.length) {
+            html.push(`<p>${inline(paragraph.join(' '))}</p>`);
+            paragraph = [];
+          }
+        };
+
+        const flushList = () => {
+          if (list.length) {
+            html.push(`<ul>${list.map((item) => `<li>${inline(item)}</li>`).join('')}</ul>`);
+            list = [];
+          }
+        };
+
+        for (let index = 0; index < lines.length; index += 1) {
+          const line = lines[index];
+          const trimmed = line.trim();
+
+          if (!trimmed) {
+            flushParagraph();
+            flushList();
+            continue;
+          }
+
+          if (trimmed.startsWith('|') && lines[index + 1]?.trim().match(/^\|?\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)+\|?$/)) {
+            flushParagraph();
+            flushList();
+            const tableLines = [];
+            while (lines[index]?.trim().startsWith('|')) {
+              tableLines.push(lines[index]);
+              index += 1;
+            }
+            index -= 1;
+            html.push(renderTable(tableLines));
+            continue;
+          }
+
+          if (trimmed.startsWith('#')) {
+            flushParagraph();
+            flushList();
+            const level = Math.min(trimmed.match(/^#+/)[0].length, 3);
+            html.push(`<h${level}>${inline(trimmed.slice(level).trim())}</h${level}>`);
+            continue;
+          }
+
+          if (trimmed.startsWith('- ')) {
+            flushParagraph();
+            list.push(trimmed.slice(2));
+            continue;
+          }
+
+          flushList();
+          paragraph.push(trimmed);
+        }
+
+        flushParagraph();
+        flushList();
+        return html.join('\n');
+      }
+
+      fetch('../developer-relations-ai-coding-era.md')
+        .then((response) => {
+          if (!response.ok) throw new Error('Article failed to load');
+          return response.text();
+        })
+        .then((markdown) => {
+          content.className = '';
+          content.removeAttribute('aria-live');
+          content.innerHTML = render(markdown);
+        })
+        .catch(() => {
+          content.className = 'error';
+          content.textContent = 'The article could not be loaded.';
+        });
+    </script>
+  </body>
+</html>

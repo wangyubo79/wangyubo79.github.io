@@ -3,211 +3,206 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Developer Relations in the AI Era</title>
-    <meta name="description" content="An essay on how Developer Relations changes as AI coding reshapes who builds software and how adoption happens.">
+    <title>Yubo Wang — Personal Blog</title>
+    <meta name="description" content="Yubo Wang writes about AI, developer relations, developer tools, and the changing way we build software.">
+    <link rel="canonical" href="https://wangyubo79.github.io/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Yubo Wang — Personal Blog">
+    <meta property="og:description" content="Writing about AI, developer relations, developer tools, and the changing way we build software.">
+    <meta property="og:url" content="https://wangyubo79.github.io/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Yubo Wang — Personal Blog">
+    <meta name="twitter:description" content="Writing about AI, developer relations, developer tools, and the changing way we build software.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
     <style>
       :root {
         color-scheme: light;
-        --bg: #f7f3ea;
+        --bg: #f5f1e8;
         --paper: #fffdf8;
-        --ink: #1e2528;
-        --muted: #5f6d70;
-        --line: #d8d0c2;
+        --ink: #1c2726;
+        --muted: #667370;
+        --line: #d7d1c5;
         --accent: #0f766e;
-        --accent-dark: #134e4a;
-        --table: #eef6f4;
+        --accent-dark: #115e59;
       }
 
       * { box-sizing: border-box; }
 
+      html { scroll-behavior: smooth; }
+
       body {
         margin: 0;
-        background: linear-gradient(180deg, rgba(15, 118, 110, 0.08), transparent 18rem), var(--bg);
+        background:
+          radial-gradient(circle at 90% 0%, rgba(15, 118, 110, 0.1), transparent 28rem),
+          var(--bg);
         color: var(--ink);
-        font-family: "Open Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        line-height: 1.72;
+        font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+        line-height: 1.6;
       }
 
-      main {
-        width: min(100% - 32px, 980px);
+      a {
+        color: inherit;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 0.22em;
+      }
+
+      a:hover { color: var(--accent-dark); }
+
+      a:focus-visible {
+        border-radius: 3px;
+        outline: 3px solid rgba(15, 118, 110, 0.3);
+        outline-offset: 4px;
+      }
+
+      .shell {
+        width: min(100% - 40px, 1060px);
         margin: 0 auto;
-        padding: 56px 0 72px;
       }
 
-      article {
-        background: var(--paper);
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        box-shadow: 0 20px 60px rgba(30, 37, 40, 0.08);
-        padding: clamp(28px, 5vw, 64px);
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 96px;
+        border-bottom: 1px solid var(--line);
       }
 
-      a:hover { color: var(--accent); }
-      h1, h2, h3 { line-height: 1.2; letter-spacing: 0; }
+      .wordmark {
+        font-family: "Newsreader", Georgia, serif;
+        font-size: 1.28rem;
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      nav { display: flex; gap: 24px; }
+      nav a { color: var(--muted); font-size: 0.92rem; font-weight: 500; }
+
+      main { padding: clamp(72px, 12vw, 144px) 0 88px; }
+
+      .eyebrow,
+      .section-label,
+      .post-meta {
+        color: var(--accent-dark);
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .hero { max-width: 880px; }
+
+      h1, h2 {
+        font-family: "Newsreader", Georgia, serif;
+        font-weight: 500;
+        letter-spacing: -0.025em;
+      }
 
       h1 {
-        max-width: 760px;
-        margin: 0 0 12px;
-        font-size: clamp(2rem, 5vw, 3.8rem);
-        font-weight: 700;
+        max-width: 840px;
+        margin: 18px 0 24px;
+        font-size: clamp(3.4rem, 9vw, 7.2rem);
+        line-height: 0.92;
       }
 
-      h2 {
-        margin-top: 52px;
+      .intro {
+        max-width: 670px;
+        margin: 0;
+        color: var(--muted);
+        font-size: clamp(1.08rem, 2vw, 1.3rem);
+      }
+
+      .writing {
+        margin-top: clamp(96px, 14vw, 168px);
         border-top: 1px solid var(--line);
         padding-top: 28px;
-        font-size: clamp(1.45rem, 2.5vw, 2rem);
-        font-weight: 700;
       }
 
-      h3 {
-        margin-top: 32px;
-        color: var(--accent-dark);
-        font-size: 1.12rem;
-        font-weight: 700;
+      .post {
+        display: grid;
+        grid-template-columns: minmax(0, 1.55fr) minmax(240px, 0.7fr);
+        gap: clamp(36px, 8vw, 96px);
+        align-items: end;
+        padding: 46px 0 28px;
+        text-decoration: none;
       }
 
-      p, li { font-size: 1.04rem; }
-      p { margin: 1.05em 0; }
-      a { color: var(--accent-dark); text-underline-offset: 0.18em; }
-      ul, ol { padding-left: 1.45rem; }
-
-      table {
-        display: block;
-        width: 100%;
-        margin: 28px 0;
-        overflow-x: auto;
-        border-collapse: collapse;
-        font-size: 0.95rem;
+      .post h2 {
+        margin: 12px 0 0;
+        font-size: clamp(2.35rem, 5vw, 4.5rem);
+        line-height: 1.02;
       }
 
-      th, td {
-        min-width: 160px;
-        border: 1px solid var(--line);
-        padding: 12px 14px;
-        vertical-align: top;
+      .post-summary { margin: 0 0 12px; color: var(--muted); }
+      .read-more { color: var(--accent-dark); font-weight: 600; }
+
+      footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
+        border-top: 1px solid var(--line);
+        padding: 32px 0 48px;
+        color: var(--muted);
+        font-size: 0.9rem;
       }
 
-      th { background: var(--table); color: var(--accent-dark); text-align: left; }
-      code { border-radius: 4px; background: #eef1ed; padding: 0.1rem 0.28rem; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.92em; }
-      .loading, .error { color: var(--muted); font-size: 1.05rem; }
+      .links { display: flex; gap: 20px; }
 
-      @media (max-width: 640px) {
-        main { width: min(100% - 20px, 980px); padding: 20px 0 44px; }
-        article { padding: 24px 18px; }
-        h2 { margin-top: 40px; }
+      @media (max-width: 720px) {
+        .shell { width: min(100% - 28px, 1060px); }
+        header { min-height: 76px; }
+        nav { gap: 16px; }
+        main { padding-top: 68px; }
+        h1 { font-size: clamp(3.25rem, 18vw, 5rem); }
+        .post { grid-template-columns: 1fr; gap: 24px; padding-top: 34px; }
+        footer { flex-direction: column; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
       }
     </style>
   </head>
   <body>
-    <main>
-      <article>
-        <div id="content" class="loading">Loading article...</div>
-      </article>
-    </main>
-    <script>
-      const content = document.querySelector('#content');
-      const escapeHtml = (value) => value
-        .replaceAll('&', '&amp;')
-        .replaceAll('<', '&lt;')
-        .replaceAll('>', '&gt;')
-        .replaceAll('"', '&quot;');
+    <div class="shell">
+      <header>
+        <a class="wordmark" href="/" aria-label="Yubo Wang, home">Yubo Wang</a>
+        <nav aria-label="Primary navigation">
+          <a href="#writing">Writing</a>
+          <a href="https://github.com/wangyubo79" rel="me">GitHub</a>
+        </nav>
+      </header>
 
-      const inline = (value) => escapeHtml(value)
-        .replace(/`([^`]+)`/g, '<code>$1</code>')
-        .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-        .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+      <main>
+        <section class="hero" aria-labelledby="intro-title">
+          <div class="eyebrow">Personal blog</div>
+          <h1 id="intro-title">Ideas at the edge of technology and people.</h1>
+          <p class="intro">I’m Yubo Wang. I write about AI, developer relations, developer tools, and the changing way we build software.</p>
+        </section>
 
-      const cells = (line) => line.trim().replace(/^\||\|$/g, '').split('|').map((cell) => cell.trim());
+        <section class="writing" id="writing" aria-labelledby="writing-title">
+          <div class="section-label" id="writing-title">Writing</div>
+          <a class="post" href="/developer-relations-ai-coding-era/">
+            <div>
+              <div class="post-meta"><time datetime="2026-07-06">Jul 6, 2026</time> · Essay · 12 min read</div>
+              <h2>Developer Relations in the AI Era</h2>
+            </div>
+            <div>
+              <p class="post-summary">As AI reshapes who builds software and how adoption happens, DevRel is moving from platform evangelism to workflow design and trust-building.</p>
+              <span class="read-more">Read the essay →</span>
+            </div>
+          </a>
+        </section>
+      </main>
 
-      function renderTable(lines) {
-        const header = cells(lines[0]);
-        const rows = lines.slice(2).map(cells);
-        return `<table><thead><tr>${header.map((cell) => `<th>${inline(cell)}</th>`).join('')}</tr></thead><tbody>${rows.map((row) => `<tr>${row.map((cell) => `<td>${inline(cell)}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
-      }
-
-      function render(markdown) {
-        const lines = markdown.split('\n');
-        const html = [];
-        let paragraph = [];
-        let list = [];
-
-        const flushParagraph = () => {
-          if (paragraph.length) {
-            html.push(`<p>${inline(paragraph.join(' '))}</p>`);
-            paragraph = [];
-          }
-        };
-
-        const flushList = () => {
-          if (list.length) {
-            html.push(`<ul>${list.map((item) => `<li>${inline(item)}</li>`).join('')}</ul>`);
-            list = [];
-          }
-        };
-
-        for (let index = 0; index < lines.length; index += 1) {
-          const line = lines[index];
-          const trimmed = line.trim();
-
-          if (!trimmed) {
-            flushParagraph();
-            flushList();
-            continue;
-          }
-
-          if (trimmed.startsWith('|') && lines[index + 1]?.trim().match(/^\|?\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)+\|?$/)) {
-            flushParagraph();
-            flushList();
-            const tableLines = [];
-            while (lines[index]?.trim().startsWith('|')) {
-              tableLines.push(lines[index]);
-              index += 1;
-            }
-            index -= 1;
-            html.push(renderTable(tableLines));
-            continue;
-          }
-
-          if (trimmed.startsWith('#')) {
-            flushParagraph();
-            flushList();
-            const level = trimmed.match(/^#+/)[0].length;
-            html.push(`<h${level}>${inline(trimmed.slice(level).trim())}</h${level}>`);
-            continue;
-          }
-
-          if (trimmed.startsWith('- ')) {
-            flushParagraph();
-            list.push(trimmed.slice(2));
-            continue;
-          }
-
-          flushList();
-          paragraph.push(trimmed);
-        }
-
-        flushParagraph();
-        flushList();
-        return html.join('\n');
-      }
-
-      fetch('developer-relations-ai-coding-era.md')
-        .then((response) => {
-          if (!response.ok) throw new Error('Article failed to load');
-          return response.text();
-        })
-        .then((markdown) => {
-          content.className = '';
-          content.innerHTML = render(markdown);
-        })
-        .catch(() => {
-          content.className = 'error';
-          content.textContent = 'The article could not be loaded.';
-        });
-    </script>
+      <footer>
+        <span>© 2026 Yubo Wang</span>
+        <div class="links" aria-label="External links">
+          <a href="https://github.com/wangyubo79" rel="me">GitHub</a>
+          <a href="https://www.linkedin.com/in/yubowang79/" rel="me">LinkedIn</a>
+        </div>
+      </footer>
+    </div>
   </body>
 </html>
